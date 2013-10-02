@@ -24,7 +24,6 @@ public class PebbleViewResolver extends AbstractTemplateViewResolver implements 
 	protected AbstractUrlBasedView buildView(String viewName) throws Exception {
 		PebbleView view = (PebbleView) super.buildView(viewName);
 		
-		String source = templateLoader.getSource(viewName);
 		PebbleTemplate template = pebbleEngine.loadTemplate(viewName);
 		view.setTemplate(template);
 		
