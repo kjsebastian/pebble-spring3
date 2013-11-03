@@ -8,7 +8,6 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.loader.Loader;
-import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 public class PebbleViewResolver extends AbstractTemplateViewResolver implements ViewResolver, InitializingBean {
 	
@@ -23,9 +22,8 @@ public class PebbleViewResolver extends AbstractTemplateViewResolver implements 
 	@Override
 	protected AbstractUrlBasedView buildView(String viewName) throws Exception {
 		PebbleView view = (PebbleView) super.buildView(viewName);
-		
-		PebbleTemplate template = pebbleEngine.loadTemplate(viewName);
-		view.setTemplate(template);
+		view.setTemplateName(viewName);
+		view.setPebbleEngine(pebbleEngine);
 		
 		return view;
 	}

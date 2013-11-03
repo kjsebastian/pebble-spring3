@@ -8,18 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.AbstractTemplateView;
 
+import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 
 public class PebbleView extends AbstractTemplateView {
 
-	private PebbleTemplate template;
-
-	protected PebbleTemplate getTemplate() throws Exception {
-		return template;
+	private String templateName;
+	
+	private PebbleEngine engine;
+	
+	public void setTemplateName(String name){
+		this.templateName = name;
 	}
-
-	public void setTemplate(PebbleTemplate template) {
-		this.template = template;
+	
+	public void setPebbleEngine(PebbleEngine engine){
+		this.engine = engine;
 	}
 
 	@Override
@@ -28,6 +31,8 @@ public class PebbleView extends AbstractTemplateView {
 
 		response.setContentType(getContentType());
 		response.setCharacterEncoding("UTF-8");
+		
+		PebbleTemplate template = engine.loadTemplate(templateName);
 
 		final Writer writer = response.getWriter();
 		try {
