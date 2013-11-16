@@ -1,11 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mitchellbosecke</groupId>
   <artifactId>pebble-spring3</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
+  
   <name>Pebble Integration with Spring 3</name>
   <description>Pebble Integration with Spring 3</description>
+  
   <build>
 		<plugins>
 			<plugin>
@@ -18,6 +21,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
   <dependencies>
   	<dependency>
   		<groupId>com.mitchellbosecke</groupId>
@@ -37,4 +41,10 @@
   		<version>3.1.3.RELEASE</version>
   	</dependency>
   </dependencies>
+  
+  	<scm>
+		<connection>scm:git:git://github.com/mbosecke/pebble-spring3.git</connection>
+		<developerConnection>scm:git:git@github.com:mbosecke/pebble-spring3.git</developerConnection>
+		<url>http://github.com/mbosecke/pebble-spring3</url>
+	</scm>
 </project>
