@@ -1,19 +1,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mitchellbosecke</groupId>
-  <artifactId>pebble-spring3</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<parent>
+    	<groupId>org.sonatype.oss</groupId>
+    	<artifactId>oss-parent</artifactId>
+    	<version>7</version>
+  	</parent>
+  	
+  	<modelVersion>4.0.0</modelVersion>
+  	<groupId>com.mitchellbosecke</groupId>
+  	<artifactId>pebble-spring3</artifactId>
+  	<version>0.0.2-SNAPSHOT</version>
+  	<packaging>jar</packaging>
   
-  <name>Pebble Integration with Spring 3</name>
-  <description>Pebble Integration with Spring 3</description>
-  
-  <properties>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <build>
+  	<name>Pebble Integration with Spring 3</name>
+  	<description>Pebble Integration with Spring 3</description>
+	<url>http://www.mitchellbosecke.com/pebble</url>
+	
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	</properties>
+  	
+  	<licenses>
+		<license>
+			<name>BSD 3-Clause License</name>
+			<url>http://opensource.org/licenses/BSD-3-Clause</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+  	
+	<developers>
+		<developer>
+			<name>Mitchell Bösecke</name>
+			<email>mitchellbosecke@gmail.com</email>
+		</developer>
+	</developers>
+	
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -23,6 +45,54 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+				    	<id>attach-sources</id>
+				    	<goals>
+				     		<goal>jar</goal>
+				    	</goals>
+				    </execution>
+			  </executions>
+			</plugin>
+			<plugin>
+			  	<groupId>org.apache.maven.plugins</groupId>
+			  	<artifactId>maven-javadoc-plugin</artifactId>
+			  	<version>2.9.1</version>
+			  	<executions>
+			    	<execution>
+			      	<id>attach-javadocs</id>
+			      	<goals>
+			        	<goal>jar</goal>
+			      	</goals>
+			    	</execution>
+			  	</executions>
+			</plugin>
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-release-plugin</artifactId>
+        		<version>2.4.2</version>
+        		<configuration>
+          			<tagNameFormat>v@{project.version}-alpha</tagNameFormat>
+        		</configuration>
+      		</plugin>
+      		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-gpg-plugin</artifactId>
+        		<version>1.4</version>
+        		<executions>
+          			<execution>
+            			<id>sign-artifacts</id>
+            			<phase>verify</phase>
+            			<goals>
+              				<goal>sign</goal>
+            			</goals>
+          			</execution>
+        		</executions>
+      		</plugin>
 		</plugins>
 	</build>
 	
@@ -49,6 +119,6 @@
   	<scm>
 		<connection>scm:git:git://github.com/mbosecke/pebble-spring3.git</connection>
 		<developerConnection>scm:git:git@github.com:mbosecke/pebble-spring3.git</developerConnection>
-		<url>http://github.com/mbosecke/pebble-spring3</url>
+		<url>http://github.com/mbosecke/pebble-spring3.git</url>
 	</scm>
 </project>
