@@ -9,7 +9,7 @@
   	<modelVersion>4.0.0</modelVersion>
   	<groupId>com.mitchellbosecke</groupId>
   	<artifactId>pebble-spring3</artifactId>
-  	<version>0.0.2-SNAPSHOT</version>
+  	<version>0.0.2</version>
   	<packaging>jar</packaging>
   
   	<name>Pebble Integration with Spring 3</name>
@@ -100,7 +100,7 @@
   	<dependency>
   		<groupId>com.mitchellbosecke</groupId>
   		<artifactId>pebble</artifactId>
-  		<version>0.0.3-SNAPSHOT</version>
+  		<version>0.0.3</version>
   	</dependency>
   	<dependency>
       <groupId>javax.servlet</groupId>
@@ -120,5 +120,6 @@
 		<connection>scm:git:git://github.com/mbosecke/pebble-spring3.git</connection>
 		<developerConnection>scm:git:git@github.com:mbosecke/pebble-spring3.git</developerConnection>
 		<url>http://github.com/mbosecke/pebble-spring3.git</url>
-	</scm>
+	  <tag>v0.0.2</tag>
+  </scm>
 </project>
