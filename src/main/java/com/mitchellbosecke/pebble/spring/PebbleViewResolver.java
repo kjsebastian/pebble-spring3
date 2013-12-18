@@ -36,19 +36,15 @@ public class PebbleViewResolver extends AbstractTemplateViewResolver implements 
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		
+		this.templateLoader = pebbleEngine.getLoader();
 		templateLoader.setPrefix(this.getPrefix());
 		templateLoader.setSuffix(this.getSuffix());
-		pebbleEngine.setLoader(templateLoader);
 	}
 	
 	@Required
 	public void setPebbleEngine(PebbleEngine pebbleEngine){
 		this.pebbleEngine = pebbleEngine;
-	}
-	
-	@Required
-	public void setTemplateLoader(Loader templateLoader){
-		this.templateLoader = templateLoader;
 	}
 	
 	@Override
