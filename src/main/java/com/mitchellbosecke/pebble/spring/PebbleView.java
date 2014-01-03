@@ -20,14 +20,14 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 public class PebbleView extends AbstractTemplateView {
 
 	private String templateName;
-	
+
 	private PebbleEngine engine;
-	
-	public void setTemplateName(String name){
+
+	public void setTemplateName(String name) {
 		this.templateName = name;
 	}
-	
-	public void setPebbleEngine(PebbleEngine engine){
+
+	public void setPebbleEngine(PebbleEngine engine) {
 		this.engine = engine;
 	}
 
@@ -37,12 +37,12 @@ public class PebbleView extends AbstractTemplateView {
 
 		response.setContentType(getContentType());
 		response.setCharacterEncoding("UTF-8");
-		
-		PebbleTemplate template = engine.loadTemplate(templateName);
+
+		PebbleTemplate template = engine.compile(templateName);
 
 		final Writer writer = response.getWriter();
 		try {
-			writer.write(template.render(model));
+			template.evaluate(writer, model);
 		} finally {
 			writer.flush();
 		}

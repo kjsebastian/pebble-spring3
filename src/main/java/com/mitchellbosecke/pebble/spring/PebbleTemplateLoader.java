@@ -22,7 +22,7 @@ public class PebbleTemplateLoader extends PebbleDefaultLoader implements Resourc
 	private ResourceLoader resourceLoader;
 
 	@Override
-	protected Reader getReader(String resourceName) throws LoaderException {
+	public Reader getReader(String resourceName) throws LoaderException {
 		resourceName = getFullyQualifiedResourceName(resourceName);
 		Resource resource = resourceLoader.getResource(resourceName);
 		if (resource.exists()) {
