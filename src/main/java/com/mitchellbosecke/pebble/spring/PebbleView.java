@@ -45,6 +45,7 @@ public class PebbleView extends AbstractTemplateView {
 			template.evaluate(writer, model);
 		} finally {
 			writer.flush();
+			writer.close();
 		}
 	}
 
