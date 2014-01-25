@@ -15,9 +15,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.mitchellbosecke.pebble.error.LoaderException;
-import com.mitchellbosecke.pebble.loader.PebbleDefaultLoader;
+import com.mitchellbosecke.pebble.loader.DefaultLoader;
 
-public class PebbleTemplateLoader extends PebbleDefaultLoader implements ResourceLoaderAware {
+public class PebbleTemplateLoader extends DefaultLoader implements ResourceLoaderAware {
 
 	private ResourceLoader resourceLoader;
 
