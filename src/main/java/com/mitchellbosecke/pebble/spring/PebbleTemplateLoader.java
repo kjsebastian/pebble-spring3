@@ -29,10 +29,10 @@ public class PebbleTemplateLoader extends DefaultLoader implements ResourceLoade
 			try {
 				return new InputStreamReader(resource.getInputStream(), "UTF-8");
 			} catch (IOException e) {
-				throw new LoaderException("Failed to load template: " + resourceName);
+				throw new LoaderException(e, "Failed to load template: " + resourceName);
 			}
 		}
-		throw new LoaderException("No template exists named: " + resourceName);
+		throw new LoaderException(null, "No template exists named: " + resourceName);
 	}
 
 	@Override
