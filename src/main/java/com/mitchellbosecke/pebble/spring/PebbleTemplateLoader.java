@@ -15,11 +15,17 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.mitchellbosecke.pebble.error.LoaderException;
-import com.mitchellbosecke.pebble.loader.DefaultLoader;
+import com.mitchellbosecke.pebble.loader.Loader;
 
-public class PebbleTemplateLoader extends DefaultLoader implements ResourceLoaderAware {
+public class PebbleTemplateLoader implements Loader, ResourceLoaderAware {
 
 	private ResourceLoader resourceLoader;
+
+	private String charset = "UTF-8";
+
+	private String prefix;
+
+	private String suffix;
 
 	@Override
 	public Reader getReader(String resourceName) throws LoaderException {
@@ -27,7 +33,7 @@ public class PebbleTemplateLoader extends DefaultLoader implements ResourceLoade
 		Resource resource = resourceLoader.getResource(resourceName);
 		if (resource.exists()) {
 			try {
-				return new InputStreamReader(resource.getInputStream(), "UTF-8");
+				return new InputStreamReader(resource.getInputStream(), charset);
 			} catch (IOException e) {
 				throw new LoaderException(e, "Failed to load template: " + resourceName);
 			}
@@ -41,10 +47,33 @@ public class PebbleTemplateLoader extends DefaultLoader implements ResourceLoade
 	}
 
 	private String getFullyQualifiedResourceName(String resourceName) {
-		if (resourceName.startsWith(getPrefix())) {
-			return resourceName;
+		StringBuilder result = new StringBuilder();
+		if (prefix != null) {
+			if (resourceName.startsWith(prefix)) {
+				result.append(resourceName);
+			} else {
+				result.append(prefix).append(resourceName);
+			}
 		}
-		return getPrefix() + resourceName + (getSuffix() == null ? "" : getSuffix());
+		if (suffix != null) {
+			result.append(suffix);
+		}
+		return result.toString();
+	}
+
+	@Override
+	public void setCharset(String charset) {
+		this.charset = charset;
+	}
+
+	@Override
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+
+	@Override
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
 	}
 
 }
