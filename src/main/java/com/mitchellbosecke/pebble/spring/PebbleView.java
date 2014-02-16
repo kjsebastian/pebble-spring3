@@ -38,7 +38,7 @@ public class PebbleView extends AbstractTemplateView {
 		response.setContentType(getContentType());
 		response.setCharacterEncoding("UTF-8");
 
-		PebbleTemplate template = engine.compile(templateName);
+		PebbleTemplate template = engine.getTemplate(templateName);
 
 		final Writer writer = response.getWriter();
 		try {
