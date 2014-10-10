@@ -42,7 +42,7 @@ public class PebbleView extends AbstractTemplateView {
 
 		final Writer writer = response.getWriter();
 		try {
-			template.evaluate(writer, model);
+			template.evaluate(writer, model, request.getLocale());
 		} finally {
 			writer.flush();
 			writer.close();
