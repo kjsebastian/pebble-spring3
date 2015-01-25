@@ -17,63 +17,71 @@ import org.springframework.core.io.ResourceLoader;
 import com.mitchellbosecke.pebble.error.LoaderException;
 import com.mitchellbosecke.pebble.loader.Loader;
 
+/**
+ * Deprecated. Use the ServletLoader found in the main pebble repository
+ * instead.
+ * 
+ * @author mbosecke
+ *
+ */
+@Deprecated
 public class PebbleTemplateLoader implements Loader, ResourceLoaderAware {
 
-	private ResourceLoader resourceLoader;
+    private ResourceLoader resourceLoader;
 
-	private String charset = "UTF-8";
+    private String charset = "UTF-8";
 
-	private String prefix;
+    private String prefix;
 
-	private String suffix;
+    private String suffix;
 
-	@Override
-	public Reader getReader(String resourceName) throws LoaderException {
-		resourceName = getFullyQualifiedResourceName(resourceName);
-		Resource resource = resourceLoader.getResource(resourceName);
-		if (resource.exists()) {
-			try {
-				return new InputStreamReader(resource.getInputStream(), charset);
-			} catch (IOException e) {
-				throw new LoaderException(e, "Failed to load template: " + resourceName);
-			}
-		}
-		throw new LoaderException(null, "No template exists named: " + resourceName);
-	}
+    @Override
+    public Reader getReader(String resourceName) throws LoaderException {
+        resourceName = getFullyQualifiedResourceName(resourceName);
+        Resource resource = resourceLoader.getResource(resourceName);
+        if (resource.exists()) {
+            try {
+                return new InputStreamReader(resource.getInputStream(), charset);
+            } catch (IOException e) {
+                throw new LoaderException(e, "Failed to load template: " + resourceName);
+            }
+        }
+        throw new LoaderException(null, "No template exists named: " + resourceName);
+    }
 
-	@Override
-	public void setResourceLoader(ResourceLoader resourceLoader) {
-		this.resourceLoader = resourceLoader;
-	}
+    @Override
+    public void setResourceLoader(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
 
-	private String getFullyQualifiedResourceName(String resourceName) {
-		StringBuilder result = new StringBuilder();
-		if (prefix != null) {
-			if (resourceName.startsWith(prefix)) {
-				result.append(resourceName);
-			} else {
-				result.append(prefix).append(resourceName);
-			}
-		}
-		if (suffix != null) {
-			result.append(suffix);
-		}
-		return result.toString();
-	}
+    private String getFullyQualifiedResourceName(String resourceName) {
+        StringBuilder result = new StringBuilder();
+        if (prefix != null) {
+            if (resourceName.startsWith(prefix)) {
+                result.append(resourceName);
+            } else {
+                result.append(prefix).append(resourceName);
+            }
+        }
+        if (suffix != null) {
+            result.append(suffix);
+        }
+        return result.toString();
+    }
 
-	@Override
-	public void setCharset(String charset) {
-		this.charset = charset;
-	}
+    @Override
+    public void setCharset(String charset) {
+        this.charset = charset;
+    }
 
-	@Override
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 
-	@Override
-	public void setSuffix(String suffix) {
-		this.suffix = suffix;
-	}
+    @Override
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
 
 }
