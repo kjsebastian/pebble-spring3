@@ -19,6 +19,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<pebble.version>1.3.1</pebble.version>
+		<spring.version>3.2.13.RELEASE</spring.version>
 	</properties>
 
 	<licenses>
@@ -116,7 +117,7 @@
 		<dependency>
 			<groupId>com.mitchellbosecke</groupId>
 			<artifactId>pebble</artifactId>
-			<version>1.0.0</version>
+			<version>${pebble.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -128,7 +129,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.3.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 	</dependencies>
 
