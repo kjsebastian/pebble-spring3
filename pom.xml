@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mitchellbosecke</groupId>
 	<artifactId>pebble-spring3</artifactId>
-	<version>1.4.1</version>
+	<version>1.4.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Pebble Integration with Spring 3</name>
@@ -18,7 +18,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<pebble.version>1.4.0</pebble.version>
+		<pebble.version>1.4.1</pebble.version>
 		<spring.version>3.2.13.RELEASE</spring.version>
 	</properties>
 
