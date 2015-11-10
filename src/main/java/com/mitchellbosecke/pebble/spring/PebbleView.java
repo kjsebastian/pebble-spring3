@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.AbstractTemplateView;
 
 import com.mitchellbosecke.pebble.PebbleEngine;
@@ -42,7 +43,7 @@ public class PebbleView extends AbstractTemplateView {
 
 		final Writer writer = response.getWriter();
 		try {
-			template.evaluate(writer, model, request.getLocale());
+			template.evaluate(writer, model, RequestContextUtils.getLocale(request));
 		} finally {
 			writer.flush();
 		}
